@@ -1,0 +1,31 @@
+# 사이트 기본 정보
+title: 하루 한 편 AI 논문
+description: 매일 주요 AI 논문 한 편을 골라 개발자 눈높이로 정리합니다.
+lang: ko
+url: "https://lakhepriatum.github.io"
+baseurl: ""
+github_username: LaKhepriAtum
+
+# 빌드 설정
+theme: minima
+timezone: Asia/Seoul
+permalink: /:year/:month/:day/:title/
+show_excerpts: true
+
+minima:
+  date_format: "%Y-%m-%d"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# 상단 메뉴에 표시할 페이지
+header_pages:
+  - tags.md
+  - about.md
+
+# 사이트에 포함하지 않을 파일
+exclude:
+  - README.md
+  - CLAUDE.md
+  - _templates/
