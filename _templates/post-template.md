@@ -3,6 +3,8 @@ layout: post
 title: "글 제목 (논문 제목을 그대로 옮기지 말고, 핵심을 한국어로)"
 date: YYYY-MM-DD
 tags: [llm, agents]
+# 커리큘럼 글이면 _data/curriculum.yml의 id를 적는다. 최신 논문 글이면 이 줄을 지운다.
+curriculum_id: "nlp-bert"
 arxiv_id: "0000.00000"
 paper_title: "논문 원제 (영문 그대로)"
 paper_url: https://arxiv.org/abs/0000.00000
