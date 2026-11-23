@@ -1,0 +1,44 @@
+---
+layout: page
+title: 커리큘럼
+permalink: /curriculum/
+---
+<p>
+  월요일부터 목요일까지는 아래 커리큘럼을 순서대로 한 편씩 다루고, 금요일에는 최근 한 달 안에 나온 논문을 다룹니다.
+  2017년 이후 논문을 기본으로 하고, 그 이전 논문은 뒤의 논문을 읽는 데 꼭 필요한 것만 넣었습니다.
+</p>
+<p>
+  공통 기초를 먼저 끝낸 뒤에는 트랙을 돌아가며 한 편씩 진행합니다. 트랙 안에서는 위에서 아래 순서로 읽으면 됩니다.
+</p>
+
+<ul>
+  {% for track in site.data.curriculum.tracks %}
+  <li><a href="#{{ track.id }}">{{ track.name }}</a> ({{ track.papers.size }}편)</li>
+  {% endfor %}
+</ul>
+
+{% for track in site.data.curriculum.tracks %}
+<h2 id="{{ track.id }}">{{ track.name }}</h2>
+<p>{{ track.description }}</p>
+{% if track.papers.size == 0 %}
+<p>아직 추가된 논문이 없습니다.</p>
+{% else %}
+<table>
+  <thead>
+    <tr><th>순서</th><th>논문</th><th>연도</th><th>왜 읽는가</th><th>글</th></tr>
+  </thead>
+  <tbody>
+    {% for paper in track.papers %}
+    {% assign written = site.posts | where: "curriculum_id", paper.id | first %}
+    <tr>
+      <td>{{ forloop.index }}</td>
+      <td><strong>{{ paper.short | escape }}</strong><br>{{ paper.title | escape }}</td>
+      <td>{{ paper.year }}</td>
+      <td>{{ paper.why | escape }}</td>
+      <td>{% if written %}<a href="{{ written.url | relative_url }}">읽기</a>{% else %}예정{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endfor %}

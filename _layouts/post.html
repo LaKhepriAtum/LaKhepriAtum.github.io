@@ -12,6 +12,10 @@ layout: default
       {% for tag in page.tags %}
         · <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a>
       {% endfor %}
+      {% if page.curriculum_id %}
+        {% assign track_id = page.curriculum_id | split: "-" | first %}
+        · <a href="{{ '/curriculum/' | relative_url }}#{{ track_id }}">커리큘럼</a>
+      {% endif %}
     </p>
     {% if page.paper_url %}
     <p class="post-meta">
