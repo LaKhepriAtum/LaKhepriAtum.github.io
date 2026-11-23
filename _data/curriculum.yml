@@ -22,7 +22,7 @@ tracks:
         year: 2013
         why: 잠재 변수로 데이터를 생성하는 기본 틀입니다. 잠재 확산 모델과 오디오 코덱의 바탕이 됩니다.
       - id: base-gan
-        title: "Generative Adversarial Networks"
+        title: "Generative Adversarial Nets"
         short: GAN
         year: 2014
         why: 생성기와 판별기를 겨루게 하는 학습 방식입니다. 음성 보코더와 코덱에서 지금도 쓰입니다.
