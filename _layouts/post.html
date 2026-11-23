@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {{ page.date | date: "%Y-%m-%d" }}
+      </time>
+      {% for tag in page.tags %}
+        · <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a>
+      {% endfor %}
+    </p>
+    {% if page.paper_url %}
+    <p class="post-meta">
+      논문: <a href="{{ page.paper_url }}">{{ page.paper_title | default: page.paper_url | escape }}</a>
+      {% if page.paper_authors %}<br>저자: {{ page.paper_authors | escape }}{% endif %}
+      {% if page.code_url %}<br>코드: <a href="{{ page.code_url }}">{{ page.code_url }}</a>{% endif %}
+    </p>
+    {% endif %}
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
