@@ -8,7 +8,7 @@
 
 - `_posts/YYYY-MM-DD-영문-슬러그.md`: 글 한 편이 파일 하나다.
 - `_data/curriculum.yml`: 커리큘럼. 다룰 논문과 순서의 유일한 기준이다.
-- `curriculum.html`: 커리큘럼 페이지. `_data/curriculum.yml`과 글의 `curriculum_id`를 읽어 자동으로 표시하므로 직접 고치지 않는다.
+- `curriculum.html`: 커리큘럼 페이지. `_data/curriculum.yml`과 글의 `curriculum_id`를 읽어 자동으로 표시하므로 직접 고치지 않는다. `curriculum_id`가 없는 글은 맨 아래 "최신 논문" 표에 자동으로 들어간다.
 - `_templates/post-template.md`: 글 템플릿. 새 글은 이 파일의 구성과 머리말 항목을 그대로 따른다.
 - `_layouts/post.html`: 글 화면. 머리말의 `paper_url`, `paper_title`, `paper_authors`, `code_url`, `tags`, `curriculum_id`를 표시한다.
 - `tags.md`, `about.md`, `index.md`, `_config.yml`: 글을 쓸 때는 건드리지 않는다.

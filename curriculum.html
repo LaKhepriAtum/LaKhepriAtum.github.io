@@ -9,12 +9,17 @@ permalink: /curriculum/
 </p>
 <p>
   공통 기초를 먼저 끝낸 뒤에는 트랙을 돌아가며 한 편씩 진행합니다. 트랙 안에서는 위에서 아래 순서로 읽으면 됩니다.
+  금요일에 다룬 최신 논문은 맨 아래 <a href="#latest">최신 논문</a>에 모아 두었습니다.
 </p>
+
+{% assign latest_count = 0 %}
+{% for post in site.posts %}{% unless post.curriculum_id %}{% assign latest_count = latest_count | plus: 1 %}{% endunless %}{% endfor %}
 
 <ul>
   {% for track in site.data.curriculum.tracks %}
   <li><a href="#{{ track.id }}">{{ track.name }}</a> ({{ track.papers.size }}편)</li>
   {% endfor %}
+  <li><a href="#latest">최신 논문</a> ({{ latest_count }}편)</li>
 </ul>
 
 {% for track in site.data.curriculum.tracks %}
@@ -42,3 +47,27 @@ permalink: /curriculum/
 </table>
 {% endif %}
 {% endfor %}
+
+<h2 id="latest">최신 논문</h2>
+<p>금요일마다 다루는, 최근 한 달 안에 나온 논문입니다. 커리큘럼 순서와는 별개이며 최신순으로 나열합니다.</p>
+{% if latest_count == 0 %}
+<p>아직 올라온 글이 없습니다.</p>
+{% else %}
+<table>
+  <thead>
+    <tr><th>게시일</th><th>논문</th><th>분야</th><th>글</th></tr>
+  </thead>
+  <tbody>
+    {% for post in site.posts %}
+    {% unless post.curriculum_id %}
+    <tr>
+      <td>{{ post.date | date: "%Y-%m-%d" }}</td>
+      <td><strong>{{ post.title | escape }}</strong>{% if post.paper_title %}<br>{{ post.paper_title | escape }}{% endif %}</td>
+      <td>{% if post.tags.first %}<a href="{{ '/tags/' | relative_url }}#{{ post.tags.first | slugify }}">{{ post.tags.first }}</a>{% endif %}</td>
+      <td><a href="{{ post.url | relative_url }}">읽기</a></td>
+    </tr>
+    {% endunless %}
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
